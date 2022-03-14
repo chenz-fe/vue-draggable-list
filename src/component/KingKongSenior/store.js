@@ -39,5 +39,6 @@ export default {
   state,
   actions,
   mutations,
-  getters
+  getters,
+  namespaced: true //多加了namespaced為true
 }

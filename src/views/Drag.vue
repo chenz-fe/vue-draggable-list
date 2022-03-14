@@ -1,6 +1,10 @@
 <template>
   <div class="content">
-    <header class="title">qwwqw</header>
+    <header class="title">
+      <div class="left"><el-button icon="el-icon-arrow-left" type="text">返回</el-button></div>
+      <div class="center"></div>
+      <div class="right"><el-button icon="el-icon-view" type="text" @click="pushAppShow">预览</el-button></div>
+    </header>
     <div class="all">
       <div class="component-list">
         <el-collapse v-model="activeNames" @change="handleChange">
@@ -97,6 +101,11 @@ export default {
       activeObj: null,
     };
   },
+  created(){
+    if(sessionStorage.getItem('containerList')){
+      this.containerList = JSON.parse(sessionStorage.getItem('containerList'))
+    }
+  },
   methods: {
     handleChange(e) {
       this.activeNames = e;
@@ -112,6 +121,7 @@ export default {
         let temp = JSON.parse(JSON.stringify(this.containerList));
         temp[idx].id = this.count;
         this.containerList = temp;
+        sessionStorage.setItem('containerList',JSON.stringify(this.containerList))
       } else {
         this.activeObj = null;
       }
@@ -119,11 +129,15 @@ export default {
     sendValid() {},
     deleteItem(index) {
       this.containerList.splice(index, 1);
+      sessionStorage.setItem('containerList',JSON.stringify(this.containerList))
     },
     changeItem(index) {
       this.activeObj = this.containerList[index];
       console.log(index, "----index-----");
     },
+    pushAppShow(){
+      this.$router.push('/appShow')
+    }
   },
 };
 </script>
@@ -141,6 +155,7 @@ export default {
     background-color: #fff;
     line-height: 42px;
     padding: 0 10px;
+    justify-content: space-between;
   }
   .all {
     position: relative;
@@ -166,20 +181,22 @@ export default {
       }
     }
     .container {
-      background: linear-gradient(
-            -90deg,
-            rgba(0, 0, 0, 0.1) 1px,
-            transparent 1px
-          )
-          0% 0% / 10px 10px,
-        linear-gradient(-90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px) 0% 0% /
-          50px 50px,
-        linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px) 0% 0% / 10px
-          10px,
-        linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px) 0% 0% / 50px
-          50px;
+      // background: linear-gradient(
+      //       -90deg,
+      //       rgba(0, 0, 0, 0.1) 1px,
+      //       transparent 1px
+      //     )
+      //     0% 0% / 10px 10px,
+      //   linear-gradient(-90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px) 0% 0% /
+      //     50px 50px,
+      //   linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px) 0% 0% / 10px
+      //     10px,
+      //   linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px) 0% 0% / 50px
+      //     50px;
+      // background: url('../assets/iPhone.png');
+      //   background-size: 100% 100%;
       height: calc(100% - 24px);
-      background-color: #fff;
+      background-color: #f8f8f8;
       overflow: auto;
       margin: 0 auto;
       width: 375px;
@@ -192,6 +209,8 @@ export default {
       .center {
         display: flex;
         flex-direction: column;
+        
+        
       }
       .component-item {
         width: 100%;
@@ -202,6 +221,7 @@ export default {
           right: 20px;
           height: 0;
           width: 0;
+          z-index: 10000000;
         }
         .el-icon-circle-close:hover {
           color: red;

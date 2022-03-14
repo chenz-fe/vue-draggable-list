@@ -15,7 +15,7 @@ export default {
   },
   data(){
     return{
-      studentList:[{ name: '诊断记录',src:require('./imgge/DiagnosisRecord.png'),type:'DiagnosisRecord' },{ name: '诊断工具',src:require('./imgge/diagnosis.png'),type:'diagnosis' },{ name: '预测维护',src:require('./imgge/PredictiveMaintenance.png'),type:'PredictiveMaintenance' }]
+      studentList:[{ name: '诊断记录',src:require('./imgge/DiagnosisRecord.png'),type:'DiagnosisRecord' },{ name: '诊断工具',src:require('./imgge/diagnosis.png'),type:'diagnosis' },{ name: '预测维护',src:require('./imgge/PredictiveMaintenance.png'),type:'PredictiveMaintenance' },{ name: '预测维护',src:require('./imgge/PredictiveMaintenance.png'),type:'PredictiveMaintenance' },{ name: '预测维护',src:require('./imgge/PredictiveMaintenance.png'),type:'PredictiveMaintenance' }]
     }
     
   }
@@ -27,17 +27,19 @@ export default {
   margin: 10px 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
   text-align: center;
+  flex-wrap: wrap;
 
   .item{
      display: flex;
      align-items: center;
      justify-content: center;
      flex-direction: column;
-    width:calc(33.33% - 20px);
+     white-space: wrap;
+    width:calc(33.33%);
     border-radius: 5px;
-    background: #fdfdfd;
+    margin-bottom: 10px;
     >img{
       width: 56px;
       height: 56px;

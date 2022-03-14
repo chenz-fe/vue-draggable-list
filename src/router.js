@@ -16,8 +16,15 @@ export default new Router({
           path: "/",
           name: "drag-demo",
           component: () => import("@/views/Drag.vue")
-        }
-      ]
+        },
+       
+      ],
+      
+    },
+    {
+      path: "/appShow",
+      name: "drag-demo",
+      component: () => import("@/views/appShow.vue")
     }
   ]
 });

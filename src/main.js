@@ -6,6 +6,7 @@ import store from './store'
 import './plugins/element.js'
 import '@/styles/reset.css'
 import '@/styles/mian.css'
+import '@/styles/vant.scss'
 import ElementUI from "element-ui";
 
 const components = [];

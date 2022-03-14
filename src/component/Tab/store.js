@@ -1,7 +1,14 @@
 const state = {
   RFIDNUM: '',
-  Tab:'Tab',
-  'name':'1111',
+  active:'0',
+  name:'1111',
+  tabList:[
+    {name:'信息总览',type:''},
+    {name:'远程诊断',type:''},
+    {name:'设备保养',type:''},
+    {name:'指标统计',type:''}
+
+  ],
   recordNum: {
     deviceName: '',
     checkPosition: '',
@@ -46,5 +53,6 @@ export default {
   state,
   actions,
   mutations,
-  getters
+  getters,
+  namespaced: true //多加了namespaced為true
 }

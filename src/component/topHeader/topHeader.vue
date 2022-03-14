@@ -21,18 +21,25 @@ export default {
   },
   computed: mapState({
     name: function (state) {
-      return state.topHeader.name
+      console.log(state);
+      return state['topHeader/store'].name
     },
   }),
   created () {
       this.getList()
+      
+  },
+  mounted(){
+   console.log( this.$store,'---- this.$Store----')
   },
   methods: {
-     ...mapActions('topHeader', [
+     ...mapActions('topHeader/actions', [
       'pushName',
       'getList'
     ]),
-    
+    switchItemName(){
+      
+    }
   },
   
 };
